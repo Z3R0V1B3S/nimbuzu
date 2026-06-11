@@ -37,7 +37,7 @@ To use DevHub as your homepage or new tab page, point your browser (or a new-tab
 Edit `src/sites.js`:
 
 ```js
-const websites = [
+const sites = [
   { name: "GitHub", url: "https://github.com" },
   { name: "ChatGPT", url: "https://chatgpt.com" },
 ];
