@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Persoonlijke startpagina met klok, zoekbalk en snelkoppelingen."
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>Home</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+
+  <body>
+    <div id="background" aria-hidden="true"></div>
+
+    <main id="app">
+      <section class="block" aria-label="Klok">
+        <time id="clock" datetime=""></time>
+      </section>
+
+      <section class="block" aria-label="Zoeken">
+        <form id="search-form" role="search">
+          <img
+            src="https://www.google.com/favicon.ico"
+            alt=""
+            aria-hidden="true"
+            class="search-logo"
+            width="26"
+            height="26"
+          />
+          <label for="search" class="sr-only">Zoeken met Google</label>
+          <input
+            id="search"
+            type="search"
+            placeholder="Zoeken met Google..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </form>
+      </section>
+
+      <section class="block" aria-label="Snelkoppelingen">
+        <h2 class="section-title">Z3R0V1B3S</h2>
+        <div id="sites" role="list"></div>
+      </section>
+    </main>
+
+    <script src="src/sites.js" defer></script>
+    <script src="src/main.js" defer></script>
+  </body>
+</html>

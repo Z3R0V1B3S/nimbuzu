@@ -1,0 +1,351 @@
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root {
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-hover: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.28);
+
+  --overlay-from: rgba(0, 0, 0, 0.2);
+  --overlay-to: rgba(0, 0, 0, 0.5);
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --transition-fast: 0.12s ease;
+  --transition-base: 0.2s ease;
+  --transition-spring: 0.22s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+/* ============================================================
+   Reset & base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  background: #000;
+}
+
+/* Visually hidden utility (accessible labels) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================================
+   Background
+   ============================================================ */
+#background {
+  position: fixed;
+  inset: -60px;
+  /* background:
+    url("../assets/background.jpg") center center / cover no-repeat; */
+  /* background:
+    url("../assets/background2.jpg") center center / cover no-repeat; */
+  background: url("../assets/background3.jpg") center center / cover no-repeat;
+  /* background:
+    url("../assets/background4.jpg") center center / cover no-repeat; */
+  transform: scale(1.1);
+  will-change: transform;
+}
+
+#background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    var(--overlay-from) 0%,
+    var(--overlay-to) 100%
+  );
+}
+
+/* ============================================================
+   App shell
+   ============================================================ */
+#app {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  width: 100%;
+  min-height: 100svh;
+  padding: 40px 0;
+  animation: fade-in 0.6s ease both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.block {
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* ============================================================
+   Clock
+   ============================================================ */
+#clock {
+  display: block;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   Search
+   ============================================================ */
+#search-form {
+  position: relative;
+  isolation: isolate;
+  width: min(640px, 90vw);
+}
+
+.search-logo {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#search-form::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 999px;
+  pointer-events: none;
+  transition: box-shadow var(--transition-base);
+}
+
+#search-form:focus-within::before {
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Search icon (right side) */
+#search-form::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  pointer-events: none;
+}
+
+#search {
+  width: 100%;
+  height: 60px;
+  padding: 0 52px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #fff;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  outline: none;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+
+  /* Remove browser default search-input styling */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+#search:focus {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-hover);
+}
+
+#search::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Hide browser clear button on search inputs */
+#search::-webkit-search-cancel-button,
+#search::-webkit-search-decoration {
+  display: none;
+}
+
+/* ============================================================
+   Sites grid
+   ============================================================ */
+.section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-bottom: 16px;
+}
+
+#sites {
+  width: min(720px, 90vw);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  justify-items: center;
+  gap: 16px;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100px;
+  padding: 18px 16px 14px;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #fff;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    transform var(--transition-spring),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.site:hover,
+.site:focus-visible {
+  background: var(--glass-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.site:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.site img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform var(--transition-spring);
+}
+
+.site:hover img,
+.site:focus-visible img {
+  transform: scale(1.08);
+}
+
+.site span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.85;
+  transition: opacity var(--transition-base);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.site:hover span,
+.site:focus-visible span {
+  opacity: 1;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) {
+  #app {
+    gap: 24px;
+    padding: 24px 0;
+  }
+
+  #search {
+    height: 52px;
+    font-size: 0.95rem;
+    padding: 0 46px 0 18px;
+  }
+
+  .search-logo {
+    display: none; /* Avoid layout overlap on small screens */
+  }
+
+  .site {
+    width: 90px;
+    padding: 14px 12px 10px;
+  }
+
+  .site img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .site span {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 420px) {
+  #clock {
+    font-size: 3rem;
+  }
+
+  #search {
+    height: 48px;
+  }
+
+  .site {
+    width: 84px;
+  }
+}
