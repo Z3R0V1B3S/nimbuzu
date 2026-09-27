@@ -1,53 +1,371 @@
 <!doctype html>
-<html lang="nl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Persoonlijke startpagina met klok, zoekbalk en snelkoppelingen."
-    />
-    <meta name="theme-color" content="#000000" />
-    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0d12" />
+    <meta name="description" content="Z3R0V1B3S — personal glass dashboard" />
+    <meta name="color-scheme" content="dark light" />
+
+    <title>Z3R0V1B3S OS</title>
+
+    <link rel="icon" href="assets/favicon-fallback.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="src/style.css" />
   </head>
 
   <body>
     <div id="background" aria-hidden="true"></div>
+    <div class="background-noise" aria-hidden="true"></div>
 
-    <main id="app">
-      <section class="block" aria-label="Klok">
-        <time id="clock" datetime=""></time>
-      </section>
+    <div class="os-shell">
+      <!-- Top navigation -->
+      <header class="topbar glass">
+        <a class="brand" href="#" data-view="home" aria-label="Z3R0V1B3S Home">
+          <span class="brand-mark">Z</span>
+          <span class="brand-name">Z3R0V1B3S</span>
+        </a>
 
-      <section class="block" aria-label="Zoeken">
-        <form id="search-form" role="search">
-          <img
-            src="https://www.google.com/favicon.ico"
-            alt=""
-            aria-hidden="true"
-            class="search-logo"
-            width="26"
-            height="26"
-          />
-          <label for="search" class="sr-only">Zoeken met Google</label>
-          <input
-            id="search"
-            type="search"
-            placeholder="Zoeken met Google..."
-            autocomplete="off"
-            spellcheck="false"
-          />
-        </form>
-      </section>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-item active" type="button" data-view="home">
+            <span class="nav-icon">⌂</span>
+            <span>Home</span>
+          </button>
 
-      <section class="block" aria-label="Snelkoppelingen">
-        <h2 class="section-title">Z3R0V1B3S</h2>
-        <div id="sites" role="list"></div>
-      </section>
-    </main>
+          <button class="nav-item" type="button" data-view="tasks">
+            <span class="nav-icon">✓</span>
+            <span>Tasks</span>
+          </button>
 
-    <script src="src/sites.js" defer></script>
-    <script src="src/main.js" defer></script>
+          <button class="nav-item" type="button" data-view="notes">
+            <span class="nav-icon">□</span>
+            <span>Notes</span>
+          </button>
+
+          <button class="nav-item" type="button" data-view="links">
+            <span class="nav-icon">◈</span>
+            <span>Links</span>
+          </button>
+        </nav>
+
+        <div class="topbar-actions">
+          <div class="mini-clock">
+            <span id="topbar-time">00:00</span>
+            <span id="topbar-date">---</span>
+          </div>
+
+          <button
+            class="icon-button"
+            type="button"
+            aria-label="Open settings"
+            data-view="settings"
+          >
+            ⚙
+          </button>
+        </div>
+      </header>
+
+      <!-- Application -->
+      <main class="dashboard">
+        <!-- Home view -->
+        <section class="view active" id="view-home">
+          <section class="hero">
+            <div class="hero-copy">
+              <span class="eyebrow">PERSONAL SPACE</span>
+
+              <h1>
+                <span id="greeting">Good evening</span>
+                <br />
+                <strong>Welcome back.</strong>
+              </h1>
+
+              <p>Your personal space for the things that matter.</p>
+            </div>
+
+            <div class="hero-clock glass">
+              <span id="hero-time">00:00</span>
+              <span id="hero-date">Monday, September 28</span>
+            </div>
+          </section>
+
+          <!-- Search -->
+          <section class="search-card glass">
+            <form id="search-form" class="search-form">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+
+              <input
+                id="search-input"
+                type="search"
+                name="q"
+                placeholder="Search the web..."
+                autocomplete="off"
+                spellcheck="false"
+                aria-label="Search the web"
+              />
+
+              <kbd>Enter</kbd>
+            </form>
+
+            <div class="search-meta">
+              <span id="search-engine-label">Google Search</span>
+              <span>Press <kbd>/</kbd> to focus</span>
+            </div>
+          </section>
+
+          <!-- Dashboard cards -->
+          <section class="dashboard-grid">
+            <!-- Quick links -->
+            <article class="dashboard-card glass quick-links-card">
+              <div class="card-header">
+                <div>
+                  <span class="card-eyebrow">SHORTCUTS</span>
+                  <h2>Quick Links</h2>
+                </div>
+
+                <button class="card-action" type="button" data-view="links">
+                  View all
+                  <span>→</span>
+                </button>
+              </div>
+
+              <div class="quick-links" id="quick-links" role="list"></div>
+            </article>
+
+            <!-- Tasks -->
+            <article class="dashboard-card glass tasks-card">
+              <div class="card-header">
+                <div>
+                  <span class="card-eyebrow">TODAY</span>
+                  <h2>Tasks</h2>
+                </div>
+
+                <button class="card-action" type="button" data-view="tasks">
+                  Open
+                  <span>→</span>
+                </button>
+              </div>
+
+              <div class="task-preview" id="task-preview"></div>
+
+              <button class="add-task" type="button" data-add-task>
+                <span>+</span>
+                Add task
+              </button>
+            </article>
+
+            <!-- Date -->
+            <article class="dashboard-card glass date-card">
+              <div class="card-header">
+                <div>
+                  <span class="card-eyebrow">CALENDAR</span>
+                  <h2>Today</h2>
+                </div>
+              </div>
+
+              <div class="date-display">
+                <span id="calendar-day">28</span>
+
+                <div>
+                  <strong id="calendar-month">September</strong>
+                  <span id="calendar-year">2026</span>
+                </div>
+              </div>
+
+              <div class="week-display" id="week-display">
+                <span data-dow="1">MON</span>
+                <span data-dow="2">TUE</span>
+                <span data-dow="3">WED</span>
+                <span data-dow="4">THU</span>
+                <span data-dow="5">FRI</span>
+                <span data-dow="6">SAT</span>
+                <span data-dow="0">SUN</span>
+              </div>
+            </article>
+
+            <!-- Note -->
+            <article class="dashboard-card glass note-card">
+              <div class="card-header">
+                <div>
+                  <span class="card-eyebrow">QUICK NOTE</span>
+                  <h2>Remember</h2>
+                </div>
+
+                <button class="card-action" type="button" data-view="notes">
+                  Notes
+                  <span>→</span>
+                </button>
+              </div>
+
+              <textarea
+                id="quick-note"
+                placeholder="Write something..."
+                spellcheck="false"
+              ></textarea>
+            </article>
+          </section>
+        </section>
+
+        <!-- Tasks view -->
+        <section class="view workspace-view" id="view-tasks">
+          <span class="eyebrow">WORKSPACE</span>
+          <h1>Tasks</h1>
+
+          <div class="workspace-card glass">
+            <form class="workspace-add-form" id="task-add-form">
+              <input
+                type="text"
+                id="task-add-input"
+                placeholder="Add a task and press Enter..."
+                autocomplete="off"
+              />
+              <button type="submit">Add</button>
+            </form>
+
+            <div class="workspace-filters" id="task-filters">
+              <button type="button" class="filter-chip active" data-filter="all">All</button>
+              <button type="button" class="filter-chip" data-filter="active">Active</button>
+              <button type="button" class="filter-chip" data-filter="completed">Completed</button>
+            </div>
+
+            <div class="task-list-full" id="task-list-full"></div>
+
+            <div class="workspace-footer">
+              <span id="task-count-label">0 tasks</span>
+              <button type="button" class="text-link" id="clear-completed">Clear completed</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Notes view -->
+        <section class="view workspace-view" id="view-notes">
+          <span class="eyebrow">WORKSPACE</span>
+          <h1>Notes</h1>
+
+          <div class="workspace-card glass">
+            <textarea
+              id="notes-full"
+              class="notes-full-area"
+              placeholder="Write something..."
+              spellcheck="false"
+            ></textarea>
+            <div class="workspace-footer">
+              <span id="notes-status">Saved automatically</span>
+              <button type="button" class="text-link" id="notes-clear">Clear note</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Links view -->
+        <section class="view workspace-view" id="view-links">
+          <span class="eyebrow">WORKSPACE</span>
+          <h1>Links</h1>
+
+          <div class="workspace-card glass">
+            <form class="workspace-add-form links-add-form" id="link-add-form">
+              <input type="text" id="link-add-name" placeholder="Name" autocomplete="off" />
+              <input type="url" id="link-add-url" placeholder="https://..." autocomplete="off" />
+              <button type="submit">Add</button>
+            </form>
+
+            <input
+              type="search"
+              id="link-filter-input"
+              class="link-filter-input"
+              placeholder="Filter links..."
+              autocomplete="off"
+            />
+
+            <div class="sites-grid" id="sites-grid" role="list"></div>
+          </div>
+        </section>
+
+        <!-- Settings view -->
+        <section class="view workspace-view" id="view-settings">
+          <span class="eyebrow">SYSTEM</span>
+          <h1>Settings</h1>
+
+          <div class="workspace-card glass settings-card">
+            <div class="settings-row">
+              <div class="settings-label">
+                <strong>Appearance</strong>
+                <span>Switch between dark and light glass</span>
+              </div>
+              <div class="segmented" id="theme-switch">
+                <button type="button" data-theme-value="dark" class="active">Dark</button>
+                <button type="button" data-theme-value="light">Light</button>
+              </div>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-label">
+                <strong>Background</strong>
+                <span>Choose a scene or paste your own image URL</span>
+              </div>
+              <div class="bg-options" id="bg-options">
+                <button type="button" class="bg-swatch active" data-bg="default" style="background-image:url('assets/background3.jpg')" aria-label="Default background"></button>
+                <button type="button" class="bg-swatch" data-bg="aurora" style="background:linear-gradient(135deg,#1b2735,#0a3d62,#3c6382)" aria-label="Aurora gradient"></button>
+                <button type="button" class="bg-swatch" data-bg="sunset" style="background:linear-gradient(135deg,#2c1250,#7d3c98,#f4a261)" aria-label="Sunset gradient"></button>
+                <button type="button" class="bg-swatch" data-bg="mono" style="background:linear-gradient(135deg,#000,#2a2a2a)" aria-label="Monochrome"></button>
+              </div>
+              <form class="bg-custom-form" id="bg-custom-form">
+                <input type="url" id="bg-custom-url" placeholder="Paste image URL..." autocomplete="off" />
+                <button type="submit">Use</button>
+              </form>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-label">
+                <strong>Search engine</strong>
+                <span>Where the home search bar sends queries</span>
+              </div>
+              <div class="segmented" id="engine-switch">
+                <button type="button" data-engine-value="google" class="active">Google</button>
+                <button type="button" data-engine-value="duckduckgo">DuckDuckGo</button>
+                <button type="button" data-engine-value="bing">Bing</button>
+              </div>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-label">
+                <strong>Focus mode</strong>
+                <span>Hide the nav and status bar. Toggle anytime with <kbd>F</kbd></span>
+              </div>
+              <button type="button" class="toggle-pill" id="focus-toggle" aria-pressed="false">Off</button>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-label">
+                <strong>Reset dashboard</strong>
+                <span>Clears tasks, notes, custom links and preferences stored on this device</span>
+              </div>
+              <button type="button" class="danger-button" id="reset-data-btn">Reset all data</button>
+            </div>
+
+            <div class="settings-row shortcuts-row">
+              <div class="settings-label">
+                <strong>Keyboard shortcuts</strong>
+              </div>
+              <ul class="shortcuts-list">
+                <li><kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> focus search</li>
+                <li><kbd>F</kbd> toggle focus mode</li>
+                <li><kbd>Esc</kbd> blur search</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="statusbar">
+        <span>
+          <span class="status-dot"></span>
+          <span id="status">SYSTEM READY</span>
+        </span>
+
+        <span>Z3R0V1B3S OS</span>
+      </footer>
+    </div>
+
+    <script src="src/sites.js"></script>
+    <script src="src/main.js"></script>
   </body>
 </html>

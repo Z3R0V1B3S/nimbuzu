@@ -1,38 +1,26 @@
+/* =========================================================
+   FILE: src/sites.js
+   Default quick links shown on Home and in the Links view.
+
+   Add an entry by pushing an object with { name, url } —
+   favicon is optional; when omitted, main.js fetches one
+   automatically and falls back to a generated icon if that
+   fails. Links a person adds through the UI are stored
+   separately in localStorage and merged in at render time,
+   so this file only needs editing for the shipped defaults.
+========================================================= */
+
+"use strict";
+
 const sites = [
-  { name: "ChatGPT", url: "https://chatgpt.com" },
-  { name: "Claude", url: "https://claude.ai" },
-  { name: "LeonardoAI", url: "https://leonardo.ai" },
-  { name: "GitHub", url: "https://github.com" },
-  { name: "Vercel", url: "https://vercel.com" },
-  { name: "Sanity", url: "https://sanity.io" },
-  { name: "ProtonM", url: "https://mail.proton.me" },
-  { name: "CodePen", url: "https://codepen.io" },
-  { name: "X", url: "https://x.com" },
-  { name: "YouTube", url: "https://youtube.com" },
-  { name: "Flaticon", url: "https://flaticon.com" },
-  { name: "Pexels", url: "https://pexels.com" },
-  { name: "Next.js", url: "https://nextjs.org" },
-  { name: "React", url: "https://react.dev" },
-  { name: "TypeScript", url: "https://www.typescriptlang.org" },
-  { name: "Node.js", url: "https://nodejs.org" },
-  { name: "MDN", url: "https://developer.mozilla.org" },
-  { name: "Tailwind", url: "https://tailwindcss.com/docs" },
-  { name: "Prisma", url: "https://www.prisma.io" },
-  { name: "Supabase", url: "https://supabase.com" },
-  { name: "Notion", url: "https://notion.so" },
-  { name: "Trello", url: "https://trello.com" },
-  { name: "Linear", url: "https://linear.app" },
-  { name: "Obsidian", url: "https://obsidian.md" },
-  { name: "Figma", url: "https://figma.com" },
-  { name: "Dribbble", url: "https://dribbble.com" },
-  { name: "Coolors", url: "https://coolors.co" },
-  { name: "UI Colors", url: "https://uicolors.app" },
-  { name: "Bundlephobia", url: "https://bundlephobia.com" },
-  { name: "Regex101", url: "https://regex101.com" },
-  { name: "Postman", url: "https://postman.com" },
-  { name: "RapidAPI", url: "https://rapidapi.com" },
-  { name: "Netlify", url: "https://netlify.com" },
-  { name: "Railway", url: "https://railway.app" },
-  { name: "Render", url: "https://render.com" },
-  { name: "StackOverflow", url: "https://stackoverflow.com" },
+  { name: "GitHub", url: "https://github.com/" },
+  { name: "Google", url: "https://www.google.com/" },
+  { name: "ChatGPT", url: "https://chatgpt.com/" },
+  { name: "Claude", url: "https://claude.ai/" },
+  { name: "YouTube", url: "https://www.youtube.com/" },
+  { name: "MDN", url: "https://developer.mozilla.org/" },
+  { name: "Vercel", url: "https://vercel.com/" },
+  { name: "Figma", url: "https://figma.com/" },
+  { name: "Notion", url: "https://notion.so/" },
+  // { name: "Proton Mail", url: "https://mail.proton.me/" },
 ];
