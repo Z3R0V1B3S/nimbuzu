@@ -13,8 +13,8 @@
   --border-hover: rgba(255, 255, 255, 0.16);
 
   --text: #f4f5f7;
-  --text-muted: #a5a9b3;
-  --text-soft: #707580;
+  --text-muted: #cfcfcf;
+  --text-soft: #c9ccd3;
 
   --accent: #aebcff;
   --accent-soft: rgba(174, 188, 255, 0.12);
@@ -168,20 +168,60 @@ a {
    ========================================================= */
 
 .glass {
+  position: relative;
+  overflow: hidden;
+
   border: 1px solid var(--border);
 
-  background:
+  /* background:
     linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.075),
       rgba(255, 255, 255, 0.025)
     ),
-    var(--surface);
+    var(--surface); */
 
   box-shadow: var(--shadow);
 
   backdrop-filter: blur(18px) saturate(120%);
   -webkit-backdrop-filter: blur(18px) saturate(120%);
+}
+
+.glass::before {
+  content: "";
+
+  position: absolute;
+  inset: -100%;
+
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.025) 45%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0.025) 55%,
+    transparent 65%
+  );
+
+  transform: translateX(-35%);
+  animation: glass-shine 11s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+@keyframes glass-shine {
+  0%,
+  20% {
+    transform: translateX(-35%);
+  }
+
+  50%,
+  70% {
+    transform: translateX(35%);
+  }
+
+  100% {
+    transform: translateX(35%);
+  }
 }
 
 /* =========================================================
@@ -276,20 +316,40 @@ a {
 }
 
 .nav-icon {
-  font-size: 0.9rem;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
   opacity: 0.75;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .nav-item:hover {
   color: var(--text);
 }
 
+.nav-item:hover .nav-icon {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
 .nav-item.active {
   color: var(--text);
-
   background: rgba(255, 255, 255, 0.09);
-
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.nav-item.active .nav-icon {
+  opacity: 1;
+  stroke-width: 2;
 }
 
 .topbar-actions {
@@ -472,10 +532,27 @@ a {
 }
 
 .search-icon {
-  color: var(--text-muted);
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
 
-  font-size: 1.45rem;
-  line-height: 1;
+  display: grid;
+  place-items: center;
+
+  color: var(--text-muted);
+}
+
+.search-icon svg {
+  width: 18px;
+  height: 18px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  display: block;
 }
 
 .search-form input {

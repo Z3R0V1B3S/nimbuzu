@@ -1,17 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="nimbuzu" x1="12" y1="10" x2="52" y2="54">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#aebdff"/>
+    </linearGradient>
+  </defs>
 
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 64 64"
->
   <rect
     width="64"
     height="64"
-    rx="14"
-    fill="#181818"
+    rx="16"
+    fill="#111318"
   />
 
-  <path
-    d="M18 18h28v8H26v12h16v8H26v12h-8V18z"
-    fill="#ffffff"
-  />
+  <g transform="rotate(18 32 32)">
+    <path
+      d="
+        M17 16
+        H47
+        C48.1 16 49 16.9 49 18
+        V23
+        C49 23.6 48.7 24.2 48.2 24.6
+        L27.8 39.4
+        H47
+        C48.1 39.4 49 40.3 49 41.4
+        V46
+        C49 47.1 48.1 48 47 48
+        H17
+        C15.9 48 15 47.1 15 46
+        V41.4
+        C15 40.8 15.3 40.2 15.8 39.8
+        L36.2 25
+        H17
+        C15.9 25 15 24.1 15 23
+        V18
+        C15 16.9 15.9 16 17 16
+        Z
+      "
+      fill="url(#nimbuzu)"
+    />
+  </g>
 </svg>
