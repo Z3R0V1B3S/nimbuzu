@@ -1,6 +1,6 @@
 /* =========================================================
    FILE: src/main.js
-   Z3R0V1B3S OS — application logic
+   NIMBUZU — application logic
 
    Storage schema (localStorage, key = CONFIG.storageKey):
    {
@@ -27,12 +27,24 @@
 --------------------------------------------------------- */
 
 const CONFIG = Object.freeze({
-  storageKey: "z3r0v1b3s",
+  storageKey: "nimbuzu",
 
   searchEngines: {
-    google: { label: "Google Search", endpoint: "https://www.google.com/search", param: "q" },
-    duckduckgo: { label: "DuckDuckGo", endpoint: "https://duckduckgo.com/", param: "q" },
-    bing: { label: "Bing", endpoint: "https://www.bing.com/search", param: "q" },
+    google: {
+      label: "Google Search",
+      endpoint: "https://www.google.com/search",
+      param: "q",
+    },
+    duckduckgo: {
+      label: "DuckDuckGo",
+      endpoint: "https://duckduckgo.com/",
+      param: "q",
+    },
+    bing: {
+      label: "Bing",
+      endpoint: "https://www.bing.com/search",
+      param: "q",
+    },
   },
 
   searchHistoryLimit: 8,
@@ -49,8 +61,14 @@ const CONFIG = Object.freeze({
   // "gradient" values are used as-is.
   backgroundPresets: {
     default: { type: "image", value: "assets/background3.jpg" },
-    aurora: { type: "gradient", value: "linear-gradient(135deg, #1b2735, #0a3d62, #3c6382)" },
-    sunset: { type: "gradient", value: "linear-gradient(135deg, #2c1250, #7d3c98, #f4a261)" },
+    aurora: {
+      type: "gradient",
+      value: "linear-gradient(135deg, #1b2735, #0a3d62, #3c6382)",
+    },
+    sunset: {
+      type: "gradient",
+      value: "linear-gradient(135deg, #2c1250, #7d3c98, #f4a261)",
+    },
     mono: { type: "gradient", value: "linear-gradient(135deg, #000, #2a2a2a)" },
   },
 });
@@ -323,7 +341,9 @@ function performSearch(query) {
   Storage.update((data) => {
     const history = Array.isArray(data.searchHistory) ? data.searchHistory : [];
     const normalized = value.toLowerCase();
-    const filtered = history.filter((item) => item.toLowerCase() !== normalized);
+    const filtered = history.filter(
+      (item) => item.toLowerCase() !== normalized,
+    );
     filtered.unshift(value);
     data.searchHistory = filtered.slice(0, CONFIG.searchHistoryLimit);
   });
@@ -410,7 +430,8 @@ function getAllLinks() {
   // `sites` comes from src/sites.js, loaded before this file. It's a
   // top-level `const`, so it's NOT a window property — reference it
   // directly rather than via `window.sites`.
-  const defaults = typeof sites !== "undefined" && Array.isArray(sites) ? sites : [];
+  const defaults =
+    typeof sites !== "undefined" && Array.isArray(sites) ? sites : [];
   return { defaults, custom };
 }
 
@@ -433,7 +454,9 @@ function buildLinkCard(site, { removable = false } = {}) {
   icon.alt = "";
   icon.loading = "lazy";
   icon.decoding = "async";
-  icon.src = site.favicon || `https://www.google.com/s2/favicons?sz=64&domain=${url.hostname}`;
+  icon.src =
+    site.favicon ||
+    `https://www.google.com/s2/favicons?sz=64&domain=${url.hostname}`;
   icon.addEventListener("error", () => {
     if (icon.dataset.fallback === "true") return;
     icon.dataset.fallback = "true";
@@ -464,7 +487,9 @@ function buildLinkCard(site, { removable = false } = {}) {
       event.preventDefault();
       event.stopPropagation();
       Storage.update((data) => {
-        data.customLinks = (data.customLinks || []).filter((l) => l.id !== site.id);
+        data.customLinks = (data.customLinks || []).filter(
+          (l) => l.id !== site.id,
+        );
       });
       renderSitesGrid();
       renderQuickLinks();
@@ -820,7 +845,10 @@ function applyBackground(background) {
   if (background && background.type === "custom" && background.value) {
     // Custom URLs are already absolute (see initBackground / the form
     // handler), so they resolve the same regardless of context.
-    DOM.background.style.setProperty("--bg-image", `url("${background.value}")`);
+    DOM.background.style.setProperty(
+      "--bg-image",
+      `url("${background.value}")`,
+    );
   } else {
     const key =
       background && CONFIG.backgroundPresets[background.value]
@@ -839,7 +867,8 @@ function applyBackground(background) {
   if (DOM.bgOptions) {
     DOM.bgOptions.querySelectorAll("[data-bg]").forEach((btn) => {
       const isActive =
-        background?.type !== "custom" && btn.dataset.bg === (background?.value || "default");
+        background?.type !== "custom" &&
+        btn.dataset.bg === (background?.value || "default");
       btn.classList.toggle("active", isActive);
     });
   }
@@ -960,7 +989,8 @@ function initParallax() {
 
     DOM.background.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1.08)`;
 
-    const distance = Math.abs(targetX - currentX) + Math.abs(targetY - currentY);
+    const distance =
+      Math.abs(targetX - currentX) + Math.abs(targetY - currentY);
     frame = distance > 0.001 ? requestAnimationFrame(animate) : null;
   };
 

@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0b0d12" />
-    <meta name="description" content="Z3R0V1B3S — personal glass dashboard" />
+    <meta name="description" content="NIMBUZU — personal glass dashboard" />
     <meta name="color-scheme" content="dark light" />
 
-    <title>Z3R0V1B3S OS</title>
+    <title>NIMBUZU</title>
 
     <link rel="icon" href="assets/favicon-fallback.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="src/style.css" />
@@ -20,9 +20,9 @@
     <div class="os-shell">
       <!-- Top navigation -->
       <header class="topbar glass">
-        <a class="brand" href="#" data-view="home" aria-label="Z3R0V1B3S Home">
-          <span class="brand-mark">Z</span>
-          <span class="brand-name">Z3R0V1B3S</span>
+        <a class="brand" href="#" data-view="home" aria-label="NIMBUZU">
+          <span class="brand-mark">N</span>
+          <span class="brand-name">NIMBUZU</span>
         </a>
 
         <nav class="main-nav" aria-label="Main navigation">
@@ -221,16 +221,28 @@
             </form>
 
             <div class="workspace-filters" id="task-filters">
-              <button type="button" class="filter-chip active" data-filter="all">All</button>
-              <button type="button" class="filter-chip" data-filter="active">Active</button>
-              <button type="button" class="filter-chip" data-filter="completed">Completed</button>
+              <button
+                type="button"
+                class="filter-chip active"
+                data-filter="all"
+              >
+                All
+              </button>
+              <button type="button" class="filter-chip" data-filter="active">
+                Active
+              </button>
+              <button type="button" class="filter-chip" data-filter="completed">
+                Completed
+              </button>
             </div>
 
             <div class="task-list-full" id="task-list-full"></div>
 
             <div class="workspace-footer">
               <span id="task-count-label">0 tasks</span>
-              <button type="button" class="text-link" id="clear-completed">Clear completed</button>
+              <button type="button" class="text-link" id="clear-completed">
+                Clear completed
+              </button>
             </div>
           </div>
         </section>
@@ -249,7 +261,9 @@
             ></textarea>
             <div class="workspace-footer">
               <span id="notes-status">Saved automatically</span>
-              <button type="button" class="text-link" id="notes-clear">Clear note</button>
+              <button type="button" class="text-link" id="notes-clear">
+                Clear note
+              </button>
             </div>
           </div>
         </section>
@@ -261,8 +275,18 @@
 
           <div class="workspace-card glass">
             <form class="workspace-add-form links-add-form" id="link-add-form">
-              <input type="text" id="link-add-name" placeholder="Name" autocomplete="off" />
-              <input type="url" id="link-add-url" placeholder="https://..." autocomplete="off" />
+              <input
+                type="text"
+                id="link-add-name"
+                placeholder="Name"
+                autocomplete="off"
+              />
+              <input
+                type="url"
+                id="link-add-url"
+                placeholder="https://..."
+                autocomplete="off"
+              />
               <button type="submit">Add</button>
             </form>
 
@@ -290,7 +314,9 @@
                 <span>Switch between dark and light glass</span>
               </div>
               <div class="segmented" id="theme-switch">
-                <button type="button" data-theme-value="dark" class="active">Dark</button>
+                <button type="button" data-theme-value="dark" class="active">
+                  Dark
+                </button>
                 <button type="button" data-theme-value="light">Light</button>
               </div>
             </div>
@@ -301,13 +327,58 @@
                 <span>Choose a scene or paste your own image URL</span>
               </div>
               <div class="bg-options" id="bg-options">
-                <button type="button" class="bg-swatch active" data-bg="default" style="background-image:url('assets/background3.jpg')" aria-label="Default background"></button>
-                <button type="button" class="bg-swatch" data-bg="aurora" style="background:linear-gradient(135deg,#1b2735,#0a3d62,#3c6382)" aria-label="Aurora gradient"></button>
-                <button type="button" class="bg-swatch" data-bg="sunset" style="background:linear-gradient(135deg,#2c1250,#7d3c98,#f4a261)" aria-label="Sunset gradient"></button>
-                <button type="button" class="bg-swatch" data-bg="mono" style="background:linear-gradient(135deg,#000,#2a2a2a)" aria-label="Monochrome"></button>
+                <button
+                  type="button"
+                  class="bg-swatch active"
+                  data-bg="default"
+                  style="
+                    background-image: url(&quot;assets/background3.jpg&quot;);
+                  "
+                  aria-label="Default background"
+                ></button>
+                <button
+                  type="button"
+                  class="bg-swatch"
+                  data-bg="aurora"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #1b2735,
+                      #0a3d62,
+                      #3c6382
+                    );
+                  "
+                  aria-label="Aurora gradient"
+                ></button>
+                <button
+                  type="button"
+                  class="bg-swatch"
+                  data-bg="sunset"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #2c1250,
+                      #7d3c98,
+                      #f4a261
+                    );
+                  "
+                  aria-label="Sunset gradient"
+                ></button>
+                <button
+                  type="button"
+                  class="bg-swatch"
+                  data-bg="mono"
+                  style="background: linear-gradient(135deg, #000, #2a2a2a)"
+                  aria-label="Monochrome"
+                ></button>
               </div>
               <form class="bg-custom-form" id="bg-custom-form">
-                <input type="url" id="bg-custom-url" placeholder="Paste image URL..." autocomplete="off" />
+                <input
+                  type="url"
+                  id="bg-custom-url"
+                  placeholder="Paste image URL..."
+                  autocomplete="off"
+                />
                 <button type="submit">Use</button>
               </form>
             </div>
@@ -318,8 +389,12 @@
                 <span>Where the home search bar sends queries</span>
               </div>
               <div class="segmented" id="engine-switch">
-                <button type="button" data-engine-value="google" class="active">Google</button>
-                <button type="button" data-engine-value="duckduckgo">DuckDuckGo</button>
+                <button type="button" data-engine-value="google" class="active">
+                  Google
+                </button>
+                <button type="button" data-engine-value="duckduckgo">
+                  DuckDuckGo
+                </button>
                 <button type="button" data-engine-value="bing">Bing</button>
               </div>
             </div>
@@ -327,17 +402,32 @@
             <div class="settings-row">
               <div class="settings-label">
                 <strong>Focus mode</strong>
-                <span>Hide the nav and status bar. Toggle anytime with <kbd>F</kbd></span>
+                <span
+                  >Hide the nav and status bar. Toggle anytime with
+                  <kbd>F</kbd></span
+                >
               </div>
-              <button type="button" class="toggle-pill" id="focus-toggle" aria-pressed="false">Off</button>
+              <button
+                type="button"
+                class="toggle-pill"
+                id="focus-toggle"
+                aria-pressed="false"
+              >
+                Off
+              </button>
             </div>
 
             <div class="settings-row">
               <div class="settings-label">
                 <strong>Reset dashboard</strong>
-                <span>Clears tasks, notes, custom links and preferences stored on this device</span>
+                <span
+                  >Clears tasks, notes, custom links and preferences stored on
+                  this device</span
+                >
               </div>
-              <button type="button" class="danger-button" id="reset-data-btn">Reset all data</button>
+              <button type="button" class="danger-button" id="reset-data-btn">
+                Reset all data
+              </button>
             </div>
 
             <div class="settings-row shortcuts-row">
@@ -345,7 +435,9 @@
                 <strong>Keyboard shortcuts</strong>
               </div>
               <ul class="shortcuts-list">
-                <li><kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> focus search</li>
+                <li>
+                  <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> focus search
+                </li>
                 <li><kbd>F</kbd> toggle focus mode</li>
                 <li><kbd>Esc</kbd> blur search</li>
               </ul>
@@ -361,7 +453,7 @@
           <span id="status">SYSTEM READY</span>
         </span>
 
-        <span>Z3R0V1B3S OS</span>
+        <span>NIMBUZU</span>
       </footer>
     </div>
 

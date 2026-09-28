@@ -1,12 +1,12 @@
-# Z3R0V1B3S OS
+# NIMBUZU
 
 A modern, lightweight browser start page and personal dashboard built with pure HTML, CSS, and JavaScript.
 
-Z3R0V1B3S OS gives you a clean glass/Apple-inspired homepage with a live clock, web search, tasks, notes, quick links, calendar, themes, and customizable backgrounds.
+NIMBUZU gives you a clean glass/Apple-inspired homepage with a live clock, web search, tasks, notes, quick links, calendar, themes, and customizable backgrounds.
 
 Runs directly from a single `index.html` — no build step, server, or dependencies required.
 
-![Z3R0V1B3S OS Screenshot](./assets/screenshot.png)
+![NIMBUZU Screenshot](./assets/screenshot.png)
 
 ## Highlights
 
@@ -32,13 +32,13 @@ Runs directly from a single `index.html` — no build step, server, or dependenc
 Clone the repository:
 
 ```bash
-git clone https://github.com/Z3R0V1B3S/devhub.git
-cd devhub
+git clone https://github.com/Z3R0V1B3S/nimbuzu.git
+cd nimbuzu
 ```
 
 Open `index.html` in your browser.
 
-To use Z3R0V1B3S OS as your homepage or new-tab page, point your browser (or a new-tab extension) to the local `index.html` file.
+To use NIMBUZU as your homepage or new-tab page, point your browser (or a new-tab extension) to the local `index.html` file.
 
 ## Features
 
@@ -88,7 +88,7 @@ The Settings view includes:
 - Focus mode
 - Reset button
 
-The reset option clears the data stored by Z3R0V1B3S OS on the current device.
+The reset option clears the data stored by NIMBUZU on the current device.
 
 ## Customization
 
@@ -125,12 +125,12 @@ For example:
 
 ## Data Storage
 
-Z3R0V1B3S OS does not currently use a backend.
+NIMBUZU does not currently use a backend.
 
 Everything is stored locally in the browser using a single `localStorage` key:
 
 ```text
-z3r0v1b3s
+nimbuzu
 ```
 
 The stored data is represented as a single JSON object containing the application's local state.
@@ -173,7 +173,7 @@ devhub/
 
 ## Browser Support
 
-Z3R0V1B3S OS works in modern browsers, including:
+NIMBUZU works in modern browsers, including:
 
 - Chrome
 - Firefox
@@ -184,7 +184,7 @@ Z3R0V1B3S OS works in modern browsers, including:
 
 ## What's New
 
-Compared with the original DevHub start page, Z3R0V1B3S OS adds:
+Compared with the original DevHub start page, NIMBUZU adds:
 
 - Working navigation between Home, Tasks, Notes, Links, and Settings
 - Full local task management
@@ -214,7 +214,7 @@ Compared with the original DevHub start page, Z3R0V1B3S OS adds:
 
 ## Hosting
 
-Z3R0V1B3S OS currently has no backend dependency and can be hosted as a static website.
+NIMBUZU currently has no backend dependency and can be hosted as a static website.
 
 Suitable options include:
 
