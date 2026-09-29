@@ -103,7 +103,7 @@ a {
     rgba(5, 7, 11, 0.35),
     rgba(5, 7, 11, 0.78)
   );
-  --bg-image: url("../assets/background3.jpg");
+  --bg-image: url("../assets/background.jpg");
 }
 
 #background {

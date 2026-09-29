@@ -108,7 +108,7 @@ const sites = [
 The default background image is:
 
 ```text
-assets/background3.jpg
+assets/background.jpg
 ```
 
 Replace it with your own image or use the background settings inside the app.
@@ -148,7 +148,7 @@ Because the data is local to the browser, it does not automatically synchronize 
 ```text
 devhub/
 ├── assets/
-│   ├── background3.jpg
+│   ├── background.jpg
 │   ├── favicon-fallback.svg
 │   └── screenshot.png
 ├── src/
@@ -168,7 +168,7 @@ devhub/
 | `src/style.css`               | Complete styling, themes, glass effects, and layout |
 | `src/main.js`                 | Application behavior and local state                |
 | `src/sites.js`                | Default quick-link configuration                    |
-| `assets/background3.jpg`      | Default background image                            |
+| `assets/background.jpg`       | Default background image                            |
 | `assets/favicon-fallback.svg` | Fallback icon for links and the app                 |
 
 ## Browser Support

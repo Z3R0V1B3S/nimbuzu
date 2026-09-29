@@ -60,7 +60,7 @@ const CONFIG = Object.freeze({
   // (not the stylesheet) at runtime — see resolveAssetUrl() below.
   // "gradient" values are used as-is.
   backgroundPresets: {
-    default: { type: "image", value: "assets/background3.jpg" },
+    default: { type: "image", value: "assets/background.jpg" },
     aurora: {
       type: "gradient",
       value: "linear-gradient(135deg, #1b2735, #0a3d62, #3c6382)",
